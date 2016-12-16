@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.jason.imports.dao.UserInfoDao">
+
+    <resultMap id="BaseResultMap" type="com.jason.imports.domain.UserInfo">
+        <result column="user_id" property="userId" jdbcType="BIGINT"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="user_nickname" property="userNickname" jdbcType="VARCHAR"/>
+        <result column="user_password" property="userPassword" jdbcType="VARCHAR"/>
+        <result column="user_email" property="userEmail" jdbcType="VARCHAR"/>
+        <result column="user_phone" property="userPhone" jdbcType="VARCHAR"/>
+        <result column="del_flag" property="delFlag" jdbcType="TINYINT"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="BaseColmnSql">
+        <![CDATA[
+          user_id,user_name,user_nickname,user_password,user_email,user_phone,del_flag,create_time,modify_time
+        ]]>
+    </sql>
+
+    <sql id="BaseQuerySql">
+        <if test="userId!=null"><![CDATA[AND user_id = #{userId}]]></if>
+        <if test="userName!=null and userName!=''"><![CDATA[AND user_name = #{userName}]]></if>
+        <if test="userNickname!=null and userNickname!=''"><![CDATA[AND user_nickname = #{userNickname}]]></if>
+        <if test="userPassword!=null and userPassword!=''"><![CDATA[AND user_password = #{userPassword}]]></if>
+        <if test="userEmail!=null and userEmail!=''"><![CDATA[AND user_email = #{userEmail}]]></if>
+        <if test="userPhone!=null and userPhone!=''"><![CDATA[AND user_phone = #{userPhone}]]></if>
+        <if test="delFlag!=null"><![CDATA[AND del_flag = #{delFlag}]]></if>
+        <if test="createTime!=null"><![CDATA[AND create_time = #{createTime}]]></if>
+        <if test="modifyTime!=null"><![CDATA[AND modify_time = #{modifyTime}]]></if>
+    </sql>
+
+    <sql id="BaseUpdateSql">
+        <if test="userId!=null"><![CDATA[user_id = #{userId},]]></if>
+        <if test="userName!=null and userName!=''"><![CDATA[user_name = #{userName},]]></if>
+        <if test="userNickname!=null and userNickname!=''"><![CDATA[user_nickname = #{userNickname},]]></if>
+        <if test="userPassword!=null and userPassword!=''"><![CDATA[user_password = #{userPassword},]]></if>
+        <if test="userEmail!=null and userEmail!=''"><![CDATA[user_email = #{userEmail},]]></if>
+        <if test="userPhone!=null and userPhone!=''"><![CDATA[user_phone = #{userPhone},]]></if>
+        <if test="delFlag!=null"><![CDATA[del_flag = #{delFlag},]]></if>
+        <if test="createTime!=null"><![CDATA[create_time = #{createTime},]]></if>
+        <if test="modifyTime!=null"><![CDATA[modify_time = #{modifyTime},]]></if>
+    </sql>
+
+</mapper>
